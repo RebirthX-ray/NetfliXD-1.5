@@ -1,65 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Videos</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    // Google Drive API settings
-    var API_KEY = '131979807256-s94vium5cvpklf1eiqbqtalmg98t672g.apps.googleusercontent.com';
-    var FOLDER_ID = 'https://drive.google.com/drive/folders/1P9C8pVIsrcD0k8ygR05sbJpOjP5EeURJ?usp=drive_link';
-
-    // Fetch videos from Google Drive
-    function fetchVideos() {
-      var url = 'https://www.googleapis.com/drive/v3/files?q=%27' + FOLDER_ID + '%27%20in%20parents&key=' + API_KEY;
-
-      $.ajax({
-        url: url,
-        dataType: 'json',
-        success: function(response) {
-          displayVideos(response.files);
-        },
-        error: function(error) {
-          console.log('Error fetching videos: ' + error);
-        }
-      });
-    }
-
-    // Display videos on the page
-    function displayVideos(videos) {
-      var container = document.getElementById('video-container');
-
-      videos.forEach(function(video) {
-        var videoThumbnailUrl = 'https://drive.google.com/thumbnail?id=' + video.id;
-        var videoUrl = 'https://drive.google.com/file/d/' + video.id + '/preview';
-
-        var videoLink = document.createElement('a');
-        videoLink.href = videoUrl;
-
-        var videoThumbnail = document.createElement('img');
-        videoThumbnail.src = videoThumbnailUrl;
-        videoThumbnail.alt = video.name;
-
-        videoLink.appendChild(videoThumbnail);
-        container.appendChild(videoLink);
-      });
-    }
-  </script>
-  <style>
-    img {
-      width: 200px;
-      height: auto;
-      margin: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>NetfliXD</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Welcome to My Video Gallery</h1>
+  <header>
+    <h1>NetfliXD</h1>
+  </header>
 
-  <div id="video-container"></div>
+  <main>
+    <form action="https://script.google.com/macros/s/ENTER_SCRIPT_ID/exec" method="post">
+      <input type="text" name="movieTitle" placeholder="Movie Title" required>
+      <input type="text" name="googleDriveLink" placeholder="Google Drive Link" required>
+      <input type="submit" value="Upload Movie">
+    </form>
+  </main>
 
-  <script>
-    // Fetch videos when the page loads
-    fetchVideos();
-  </script>
+  <footer>
+    <p>&copy; 2023 NetfliXD</p>
+  </footer>
 </body>
 </html>
+
