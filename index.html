@@ -4,15 +4,17 @@
   <title>Google Drive API Example</title>
   <script src="https://apis.google.com/js/api.js"></script>
   <script>
+    var filesList = document.getElementById('files-list');
+
     function handleClientLoad() {
       gapi.load('client:auth2', initClient);
     }
 
     function initClient() {
       gapi.client.init({
-        clientId: '131979807256-s94vium5cvpklf1eiqbqtalmg98t672g.apps.googleusercontent.com',
+        clientId: '131979807256-apfmr42kcdj24t7binb61o1esv3eri9a.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
-        scope: 'https://www.googleapis.com/auth/drive.file',
+        scope: 'https://www.googleapis.com/auth/drive.readonly', // Use the appropriate scope based on your needs
       }).then(function() {
         // Handle the authentication flow.
         // You can check if the user is signed in using `gapi.auth2.getAuthInstance().isSignedIn.get()`
@@ -22,6 +24,7 @@
     function updateSigninStatus(isSignedIn) {
       if (isSignedIn) {
         // User is signed in, perform the necessary actions.
+        listFiles();
       } else {
         // User is signed out, perform the necessary actions.
       }
@@ -41,7 +44,15 @@
         fields: 'nextPageToken, files(id, name)',
       }).then(function(response) {
         var files = response.result.files;
-        // Process the files accordingly
+        if (files && files.length > 0) {
+          filesList.innerHTML = '<h2>Files:</h2>';
+          for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            filesList.innerHTML += '<p>' + file.name + ' (' + file.id + ')</p>';
+          }
+        } else {
+          filesList.innerHTML = '<p>No files found.</p>';
+        }
       });
     }
   </script>
@@ -50,7 +61,7 @@
   <h1>Google Drive API Example</h1>
   <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
   <button id="signout-button" onclick="handleSignOutClick()">Sign Out</button>
-  <button onclick="listFiles()">List Files</button>
+  <div id="files-list"></div>
 
   <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 </body>
