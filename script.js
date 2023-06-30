@@ -1,4 +1,4 @@
-var CLIENT_ID = '131979807256-s94vium5cvpklf1eiqbqtalmg98t672g.apps.googleusercontent.com'; // Replace with your client ID obtained from the Google Cloud Console
+var CLIENT_ID = 'http://131979807256-s94vium5cvpklf1eiqbqtalmg98t672g.apps.googleusercontent.com'; // Replace with your client ID obtained from the Google Cloud Console
 var SCOPES = 'https://www.googleapis.com/auth/drive.file';
 
 function handleAuthClick() {
@@ -70,3 +70,4 @@ function uploadFile(event) {
 
   reader.readAsBinaryString(file);
 }
+
