@@ -2,24 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>NetfliXD</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Google Drive Upload</title>
+  <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
-  <header>
-    <h1>NetfliXD</h1>
-  </header>
-
-  <main>
-    <div id="videoPlayer">
-      <video id="player" controls></video>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Apple Video Player</p>
-  </footer>
-
+  <button onclick="handleAuthClick()">Authorize</button>
+  <input type="file" id="filePicker" style="display: none;">
   <script src="script.js"></script>
 </body>
 </html>
+
