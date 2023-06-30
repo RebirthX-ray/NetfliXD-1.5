@@ -16,7 +16,7 @@
         url: url,
         dataType: 'json',
         success: function(response) {
-          displayVideos(response.items);
+          displayVideos(response.files);
         },
         error: function(error) {
           console.log('Error fetching videos: ' + error);
@@ -29,19 +29,28 @@
       var container = document.getElementById('video-container');
 
       videos.forEach(function(video) {
-        var videoUrl = 'https://drive.google.com/uc?export=download&id=' + video.id;
-        var videoElement = document.createElement('video');
-        videoElement.src = videoUrl;
-        videoElement.controls = true;
+        var videoThumbnailUrl = 'https://drive.google.com/thumbnail?id=' + video.id;
+        var videoUrl = 'https://drive.google.com/file/d/' + video.id + '/preview';
 
-        var videoTitle = document.createElement('h3');
-        videoTitle.textContent = video.name;
+        var videoLink = document.createElement('a');
+        videoLink.href = videoUrl;
 
-        container.appendChild(videoTitle);
-        container.appendChild(videoElement);
+        var videoThumbnail = document.createElement('img');
+        videoThumbnail.src = videoThumbnailUrl;
+        videoThumbnail.alt = video.name;
+
+        videoLink.appendChild(videoThumbnail);
+        container.appendChild(videoLink);
       });
     }
   </script>
+  <style>
+    img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Welcome to My Video Gallery</h1>
@@ -54,4 +63,3 @@
   </script>
 </body>
 </html>
-
