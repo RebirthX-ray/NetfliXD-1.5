@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ma Boxflix</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Netflix-like Website</title>
 </head>
 <body>
-  <div id="player"></div>
-  <div id="file-list">
-    <ul>
-      <li onclick="playVideo('video1.mp4')">Vidéo 1</li>
-      <li onclick="playVideo('video2.mp4')">Vidéo 2</li>
-      <li onclick="playVideo('video3.mp4')">Vidéo 3</li>
-    </ul>
-  </div>
+  <video id="videoPlayer" controls>
+    <source src="path/to/your/video.mp4" type="video/mp4">
+  </video>
 
   <script src="script.js"></script>
 </body>
