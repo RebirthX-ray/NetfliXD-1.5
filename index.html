@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Google Drive Upload</title>
-  <script src="https://apis.google.com/js/api.js"></script>
+  <title>Ma Boxflix</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <button onclick="handleAuthClick()">Authorize</button>
-  <input type="file" id="filePicker" style="display: none;">
+  <div id="player"></div>
+  <div id="file-list">
+    <ul>
+      <li onclick="playVideo('video1.mp4')">Vidéo 1</li>
+      <li onclick="playVideo('video2.mp4')">Vidéo 2</li>
+      <li onclick="playVideo('video3.mp4')">Vidéo 3</li>
+    </ul>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
-
